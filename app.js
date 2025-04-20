@@ -50,11 +50,7 @@ const sessionOptions = {
         httpOnly :true,
         }
 };
-
-app.get("/",() => {
-    res.render("./listings/index.ejs");
-})
-
+ 
 app.use(session(sessionOptions));
 app.use(flash());
 
