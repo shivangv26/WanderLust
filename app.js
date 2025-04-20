@@ -51,6 +51,10 @@ const sessionOptions = {
         }
 };
 
+app.get("/",() => {
+    res.render("./listings/index.ejs");
+})
+
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -67,16 +71,7 @@ app.use((req,res,next) => {
     res.locals.currUser = req.user;
     next();
 })
-
-// app.get("/demouser",async (req,res) =>{
-//     let fakeUser = new User({
-//         email:"student@gmail.com",
-//         username:"delta-student",
-//     });
-//     let registeredUser = await User.register(fakeUser,"helloworld");
-//     res.send(registeredUser);
-// })
-
+ 
 main().then(() => {
     console.log("Connected to DB");
 })
