@@ -81,6 +81,11 @@ app.listen(8080 , ()=>{
     console.log("Server is listening on port 8080");
 })
 
+app.get("/" , async (req,res) => {
+    const allListings = await Listing.find();
+    res.render("./listings/index.ejs",{allListings});
+});
+
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
